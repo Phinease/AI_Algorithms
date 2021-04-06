@@ -30,7 +30,7 @@ public abstract class Problem<State extends IState<?>> {
     public static <State extends IState<?>> Problem<State> defineProblem(State initState, State goalState) {
         String desc = "Problem: from " + initState + " to : " + goalState;
 
-        return new Problem<State>(initState, desc) {
+        return new Problem<>(initState, desc) {
 
             public boolean isTerminal(State aState) {
                 return goalState.equals(aState);

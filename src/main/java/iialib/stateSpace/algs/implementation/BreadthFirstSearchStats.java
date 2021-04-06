@@ -35,7 +35,7 @@ public class BreadthFirstSearchStats<S extends IState<O>, O extends IOperator<S>
         SSNode<S, O> ancestor = node.getAncestor();
         Solution<S, O> sol = new Solution<S, O>(s);
         while (ancestor != null) {
-            sol = new Solution<S, O>(ancestor.getState(), op, sol);
+            sol = new Solution<>(ancestor.getState(), op, sol);
             op = ancestor.getOperator();
             ancestor = ancestor.getAncestor();
         }
@@ -43,8 +43,17 @@ public class BreadthFirstSearchStats<S extends IState<O>, O extends IOperator<S>
     }
 
     @Override
-    public Solution solve(Problem p) {
-        return null;
+    public Solution<S, O> solve(Problem<S> p) {
+        this.problem = p;
+        System.out.println("----------------------------------------------------");
+        System.out.println("Solving problem: " + problem);
+        System.out.println("with algorithm: " + DESCRIPTION);
+        System.out.println("----------------------------------------------------");
+        Solution<S, O> sol = search(problem.getInitialState());
+        System.out.println("----------------------------------------------------");
+        System.out.println((sol != null) ? "Solution : " + sol : "FAILURE !");
+        System.out.println("----------------------------------------------------");
+        return sol;
     }
 
     private Solution<S, O> search(S s) {
@@ -62,7 +71,8 @@ public class BreadthFirstSearchStats<S extends IState<O>, O extends IOperator<S>
             developedNodes.add(node);
             S state = node.getState();
             this.increaseDeveloped();
-            //
+//            System.out.println("From: " + node.getOperator() + state);
+
             if (problem.isTerminal(state)) {
                 result = buildSolution(node);
                 break;
@@ -73,11 +83,14 @@ public class BreadthFirstSearchStats<S extends IState<O>, O extends IOperator<S>
                     S successor = operator.successor(state);
                     if (notContainsNodeWithSameState(developedNodes, successor) && notContainsNodeWithSameState(frontier, successor)) {
                         frontier.addLast(new SSNode<>(successor, operator, node));
-                        this.increaseVisited();   // New created node
+                        this.increaseVisited();
+//                        System.out.println("Added: " + operator.toString());
                     }
                 }
+//                System.out.println();
             }
         }
+        System.out.println(statistics());
         return result;
     }
 

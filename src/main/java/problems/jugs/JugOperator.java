@@ -3,8 +3,7 @@ package problems.jugs;
 import iialib.stateSpace.model.IOperator;
 
 public class JugOperator implements IOperator<JugState> {
-    // TODO - You free to reorganize as you want
-    enum Action {FILL, EMPTY, POUR};
+    enum Action {FILL, EMPTY, POUR}
     private final Action action;
     private final int jug1;
     private int jug2;
@@ -12,12 +11,13 @@ public class JugOperator implements IOperator<JugState> {
     // ------------ Constructor -------------------
 
     JugOperator(Action action, int j) {
+        assert (action != Action.POUR);
         this.action = action;
         jug1 = j;
-        if (action == Action.POUR) throw new RuntimeException("invalid operator: argument should be more than 1");
     }
 
     JugOperator(Action action, int j1, int j2) {
+        assert (action == Action.POUR);
         this.action = action;
         jug1 = j1;
         jug2 = j2;

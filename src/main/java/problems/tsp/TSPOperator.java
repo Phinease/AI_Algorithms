@@ -24,7 +24,6 @@ public class TSPOperator implements IOperatorWithCost<TSPState> {
 
 	@Override
 	public String getName() {
-		// TODO Auto-generated method stub
 		return "next : "+ nextTown;
 	}
 
@@ -47,14 +46,12 @@ public class TSPOperator implements IOperatorWithCost<TSPState> {
 
 	@Override
 	public double getCost() {
-		// TODO Auto-generated method stub
 		return this.cost;
 	}
 		
 	
 	@Override
 	public String toString() {
-		// TODO Auto-generated method stub
 		return getName();
 	}
 }

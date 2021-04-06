@@ -43,7 +43,6 @@ public class MapOfRomania1 extends AMap {
 	//---------------------- Constructor ----------------------
 	public MapOfRomania1() {
 		super(set);
-		// TODO Auto-generated constructor stub
 	}
 
 	
