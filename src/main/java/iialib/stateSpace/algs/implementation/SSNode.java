@@ -9,6 +9,8 @@ public class SSNode<S extends IState<O>, O extends IOperator<S>> {
 	private S state;
 	private O operator;
 	private SSNode<S, O> ancestor;
+	private double g;
+	private double f;
 
 	// -------------- Constructors -------------------
 	public SSNode() {
@@ -50,6 +52,22 @@ public class SSNode<S extends IState<O>, O extends IOperator<S>> {
 
 	public boolean hasSameState(SSNode<S, O> n) {
 		return state.equals(n.state);
+	}
+
+	public double getG() {
+		return g;
+	}
+
+	public void setG(double g) {
+		this.g = g;
+	}
+
+	public double getF() {
+		return f;
+	}
+
+	public void setF(double f) {
+		this.f = f;
 	}
 
 	// -------------- Other Methods -------------------

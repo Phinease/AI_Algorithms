@@ -1,7 +1,6 @@
 package problems.tsp.map;
 
 import java.util.Set;
-import java.util.SortedSet;
 
 public abstract class AMap {
 		
@@ -33,7 +32,7 @@ public abstract class AMap {
 	// To override if Roads have id labels
 	public String  roadId(String s1, String s2) {
 		return "";
-	};
+	}
 	
 	/* Return the smallest distance among all existing roads on the map */
 	public double minimalDistance(){
@@ -50,8 +49,8 @@ public abstract class AMap {
 	public double shortestRoadDistanceFromTown(String town){
 		double minDist = Double.MAX_VALUE;
 		for (String otherTown : towns)
-			if(town != otherTown && areConnected(town,otherTown))
-					minDist = Math.min(minDist, distance(town,otherTown));
+			if (!town.equals(otherTown) && areConnected(town, otherTown))
+				minDist = Math.min(minDist, distance(town, otherTown));
 	return  minDist;
 	}
 
@@ -60,9 +59,9 @@ public abstract class AMap {
 		double minDist = Double.MAX_VALUE;
 		int nbOfNeighbors=0;
 		for (String otherTown : towns)
-			if(town != otherTown && areConnected(town,otherTown)) {
-				minDist = Math.min(minDist, distance(town,otherTown));
-				nbOfNeighbors++;;
+			if (!town.equals(otherTown) && areConnected(town, otherTown)) {
+				minDist = Math.min(minDist, distance(town, otherTown));
+				nbOfNeighbors++;
 			}
 	if (nbOfNeighbors > 0)	
 		return  minDist/nbOfNeighbors;

@@ -18,7 +18,7 @@ public class Map2 extends AMap {
 		J,K,L
 	};
 				
-	private static int[][] distance = 
+	private static final int[][] distance =
 	{	
 		{   0,  -1,  -1, 374,  -1, 146,  -1,  -1, 140, 5, 22, 38},
 		{  -1,   0, 160,  -1, 211,  -1, 101,  -1,  -1, 1,  2, 40},
@@ -38,7 +38,7 @@ public class Map2 extends AMap {
 	static Set<String> set =
 			EnumSet.allOf(Town.class)
 						.stream()
-						.map(t -> t.toString())
+						.map(Enum::toString)
 						.collect(Collectors.toSet()) ;
 	
 	//---------------------- Constructor ----------------------

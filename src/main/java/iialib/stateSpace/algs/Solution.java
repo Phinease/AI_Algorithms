@@ -103,15 +103,15 @@ public class Solution<S extends IState<O>, O extends IOperator<S>> {
     }
 
     public String toString() {
-        String s = "";
+        StringBuilder s = new StringBuilder();
         Solution<S, O> sol = this;
         while (sol != null) {
-            s = s + sol.state;
+            s.append(sol.state);
             if (sol.operator != null)
-                s = s + " - " + sol.operator + " -> ";
+                s.append(" - ").append(sol.operator).append(" -> \n");
             sol = sol.rest;
         }
-        return s;
+        return s.toString();
     }
 
 }

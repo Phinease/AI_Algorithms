@@ -20,7 +20,7 @@ public class MapOfRomania1 extends AMap {
 		
 	// Road distances between cities (according to the towns order in the enum)
 		// -1 means that there is no road directly connecting the towns
-	private static double[][] distance = 
+	private static final double[][] distance =
 	{
 		{   0,  -1,  -1, 374,  -1, 146,  -1,  -1, 140 },
 		{  -1,   0, 160,  -1, 211,  -1, 101,  -1,  -1 },
@@ -37,7 +37,7 @@ public class MapOfRomania1 extends AMap {
 	static Set<String> set =
 			EnumSet.allOf(Town.class)
 						.stream()
-						.map(t -> t.toString())
+						.map(Enum::toString)
 						.collect(Collectors.toSet()) ;
 	
 	//---------------------- Constructor ----------------------

@@ -22,11 +22,11 @@ public class BreadthFirstSearchStats<S extends IState<O>, O extends IOperator<S>
         super();
     }
 
-    private static <S extends IState<O>, O extends IOperator<S>> boolean containsNodeWithSameState(Collection<SSNode<S, O>> collection, S state) {
+    private static <S extends IState<O>, O extends IOperator<S>> boolean notContainsNodeWithSameState(Collection<SSNode<S, O>> collection, S state) {
         for (SSNode<S, O> node : collection)
             if (node.getState().equals(state))
-                return true;
-        return false;
+                return false;
+        return true;
     }
 
     private static <S extends IState<O>, O extends IOperator<S>> Solution<S, O> buildSolution(SSNode<S, O> node) {
@@ -52,8 +52,8 @@ public class BreadthFirstSearchStats<S extends IState<O>, O extends IOperator<S>
         Solution<S, O> result = null;
 
         // Data Structure initialization
-        Set<SSNode<S, O>> developedNodes = new HashSet<SSNode<S, O>>();
-        LinkedList<SSNode<S, O>> frontier = new LinkedList<SSNode<S, O>>();
+        Set<SSNode<S, O>> developedNodes = new HashSet<>();
+        LinkedList<SSNode<S, O>> frontier = new LinkedList<>();
         frontier.addLast(new SSNode<>(s, null, null));
         this.increaseVisited();    // First created node
 
@@ -71,8 +71,8 @@ public class BreadthFirstSearchStats<S extends IState<O>, O extends IOperator<S>
                 while (it.hasNext()) {
                     O operator = it.next();
                     S successor = operator.successor(state);
-                    if (!containsNodeWithSameState(developedNodes, successor) && !containsNodeWithSameState(frontier, successor)) {
-                        frontier.addLast(new SSNode<S, O>(successor, operator, node));
+                    if (notContainsNodeWithSameState(developedNodes, successor) && notContainsNodeWithSameState(frontier, successor)) {
+                        frontier.addLast(new SSNode<>(successor, operator, node));
                         this.increaseVisited();   // New created node
                     }
                 }

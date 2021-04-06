@@ -9,7 +9,7 @@ public class OpRoad implements IOperatorWithCost<City>{
 
 	
 	// ------------ List with all operators -------------------
-	public static final List<OpRoad> ALL_OPS = new ArrayList<OpRoad>();
+	public static final List<OpRoad> ALL_OPS = new ArrayList<>();
 	 
 	// ------------ Attributes -------------------
     	

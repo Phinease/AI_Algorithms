@@ -1,10 +1,7 @@
 package problems.taquin;
 
 public class Test {
-	
-	
-	
-	
+
 	public static void main(String[] args) {
 
 		//Beware when testing to start from which it is possible

@@ -44,9 +44,8 @@ public class SearchStats {
     }
 
 	public String statistics() {
-        String s = "Number of visited states (created nodes) " + numberOfVisitedStates + "\n" +
+        return "Number of visited states (created nodes) " + numberOfVisitedStates + "\n" +
                 "Number of developed nodes " + numberOfDevelopedStates + "\n";
-        return s;
     }
 
 }

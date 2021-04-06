@@ -27,7 +27,7 @@ public class BestFirstSearchStats<S extends IState<O>, O extends IOperatorWithCo
 		//...
 		System.out.println("-----------------------------------------------------");
 		System.out.println("Solving problem: " + p);
-		System.out.println("with algorithm: " + this.DESCRIPTION + " and heurisitic " + h);
+		System.out.println("with algorithm: " + DESCRIPTION + " and heurisitic " + h);
 		System.out.println("-----------------------------------------------------");
 		resetStatistics();
 

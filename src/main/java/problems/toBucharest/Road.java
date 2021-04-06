@@ -66,15 +66,9 @@ public class Road {
 			if (Float.floatToIntBits(distance) != Float.floatToIntBits(other.distance))
 				return false;
 			if (roadId == null) {
-				if (other.roadId != null)
-					return false;
-			} else if (!roadId.equals(other.roadId))
-				return false;
-			return true;
+				return other.roadId == null;
+			} else return roadId.equals(other.roadId);
 		}
-
-
-	
 }
 
     

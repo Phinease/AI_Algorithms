@@ -1,9 +1,9 @@
 package problems.tsp;
 
+import iialib.stateSpace.model.IOperatorWithCost;
+
 import java.util.HashSet;
 import java.util.Set;
-
-import iialib.stateSpace.model.IOperatorWithCost;
 
 public class TSPOperator implements IOperatorWithCost<TSPState> {
 	
@@ -38,11 +38,11 @@ public class TSPOperator implements IOperatorWithCost<TSPState> {
 
 	@Override
 	public TSPState successor(TSPState s) {
-		Set<String> remaining = new HashSet<String>();
-		for(String town : s.getToBeVisited())
-				if(!town.equals(nextTown))
-					remaining.add(town);
-		return new TSPState(remaining,nextTown);
+		Set<String> remaining = new HashSet<>();
+		for (String town : s.getToBeVisited())
+			if (!town.equals(nextTown))
+				remaining.add(town);
+		return new TSPState(remaining, nextTown);
 	}
 
 	@Override
@@ -57,8 +57,4 @@ public class TSPOperator implements IOperatorWithCost<TSPState> {
 		// TODO Auto-generated method stub
 		return getName();
 	}
-	
-	
-	
-
 }
