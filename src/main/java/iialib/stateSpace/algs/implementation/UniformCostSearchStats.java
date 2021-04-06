@@ -90,9 +90,9 @@ public class UniformCostSearchStats<S extends IState<O>, O extends IOperatorWith
 					frontiere.add(node);
 					increaseVisited();
 				} else if (node.getF() > currentnode.getF() + operator.getCost()) {
-					node.setAncestor(currentnode);
+					node = new SSNode<>(successor, operator, currentnode);
 					node.setF(node.getF() + operator.getCost());
-					if (removeNodeWithSameState(dejaDev, node.getState())) frontiere.add(node);
+					frontiere.add(node);
 				}
 			}
 		}

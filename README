@@ -40,7 +40,7 @@ H2 n’est pas minorante, on va donner une contre-exemple.
 Supposons la distance entre la ville courante est V1 est d,
 et les villes restant à visiter V1, V2, V0 sont très proches,
 les distances entre eux sont négligeables alors la longueur moyenne des routes quittant de V1 est d/2,
-pour V2 est d/3, pour v0 est d/2, la somme est (4d)/3, mais en fait le coût optimale vers v0 est d, 4d)/3>d,
+pour V2 est d/3, pour v0 est d/2, la somme est (4d)/3, mais en fait le coût optimale vers v0 est d, (4d)/3>d,
 donc h2 n’est pas minorante
 
 H3 est minorante car pour chaque ville on va visiter qu’une fois,
