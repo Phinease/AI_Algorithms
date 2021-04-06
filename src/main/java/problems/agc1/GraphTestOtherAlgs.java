@@ -41,13 +41,13 @@ public class GraphTestOtherAlgs{
 //		Solution<LNode, LEdge> s5 = bfs.solve(p);
 //		System.out.println();
 //
-//		IterativeDeepeningSearchStats<LNode, LEdge> alg6 = new IterativeDeepeningSearchStats<>(100);
-//		Solution<LNode, LEdge> s6 = alg6.solve(p, Heuristics.h1);
-//		System.out.println();
-//
-		ASearchAlgorithmStats<LNode, LEdge> alg7 = new UniformCostSearchStats<>();
-		SolutionWithCost<LNode, LEdge> bestSol7 = (SolutionWithCost<LNode, LEdge>) alg7.solve(p);
+		IterativeDeepeningSearchStats<LNode, LEdge> alg6 = new IterativeDeepeningSearchStats<>(100);
+		Solution<LNode, LEdge> s6 = alg6.solve(p, Heuristics.h1);
 		System.out.println();
+//
+//		ASearchAlgorithmStats<LNode, LEdge> alg7 = new UniformCostSearchStats<>();
+//		SolutionWithCost<LNode, LEdge> bestSol7 = (SolutionWithCost<LNode, LEdge>) alg7.solve(p);
+//		System.out.println();
 //
 //		AHeuristicSearchAlgorithmStats<LNode, LEdge> alg8 = new BestFirstSearchStats<>();
 //		SolutionWithCost<LNode, LEdge> bestSol8 = (SolutionWithCost<LNode, LEdge>) alg8.solve(p, Heuristics.h1);

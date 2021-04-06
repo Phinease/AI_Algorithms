@@ -47,20 +47,15 @@ public class IterativeDeepeningSearchStats<S extends IState<O>, O extends IOpera
         int count = 0;
 
         while (!stop && !success && count < maxIter) {
-            System.out.println(borne);
             newBorne = Double.MAX_VALUE;
             ArrayList<S> dejaVue = new ArrayList<>();
             sol = rProfHeuristiqueBornnee(node, dejaVue, p, h);
 
-            if (sol != null) {
-                if (newBorne > borne) {
-                    borne = newBorne;
-                } else {
-                    stop = true;
-                }
-            } else {
-                success = true;
-            }
+            if (sol == null) {
+                if (newBorne > borne) borne = newBorne;
+                else stop = true;
+            } else success = true;
+
             count++;
         }
 
@@ -68,7 +63,7 @@ public class IterativeDeepeningSearchStats<S extends IState<O>, O extends IOpera
         System.out.println((sol != null) ? "Solution : " + sol + "\nCost : " + sol.cost() : "FAILURE !");
         System.out.println(statistics());
         System.out.println("-----------------------------------------------------");
-        return null;
+        return sol;
     }
 
     private SolutionWithCost<S, O> rProfHeuristiqueBornnee(SSNode<S, O> node, ArrayList<S> dejaDev, Problem<S> p, IHeuristic<S> h) {
@@ -76,24 +71,23 @@ public class IterativeDeepeningSearchStats<S extends IState<O>, O extends IOpera
             newBorne = node.getF();
             return null;
         }
-        S state = node.getState();
-        if (p.isTerminal(state)) {
-            return new SolutionWithCost<>(node.getState(), node.getOperator());
-        }
 
+        S state = node.getState();
+        if (p.isTerminal(state)) return new SolutionWithCost<>(node.getState(), null);
         if (dejaDev.contains(state)) return null;
+
         dejaDev.add(state);
         Iterator<O> it = state.applicableOperators();
         while (it.hasNext()) {
             O operator = it.next();
-            SSNode<S, O> successor = new SSNode<>(operator.successor(state), operator, node);
-            successor.setG(node.getG() + operator.getCost());
-            successor.setF(successor.getG() + h.apply(successor.getState()));
-            SolutionWithCost<S, O> rest = rProfHeuristiqueBornnee(successor, dejaDev, p, h);
+            S successorState = operator.successor(state);
 
-            if (rest != null) {
-                return new SolutionWithCost<>(state, operator, rest);
-            }
+            SSNode<S, O> successor = new SSNode<>(successorState, operator, node);
+            successor.setG(node.getG() + operator.getCost());
+            successor.setF(successor.getG() + h.apply(successorState));
+
+            SolutionWithCost<S, O> rest = rProfHeuristiqueBornnee(successor, new ArrayList<>(dejaDev), p, h);
+            if (rest != null) return new SolutionWithCost<>(state, operator, rest);
         }
 
         return null;
