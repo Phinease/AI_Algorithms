@@ -83,7 +83,7 @@ public class AStarSearchStats<S extends IState<O>, O extends IOperatorWithCost<S
             frontiere.remove(0);
             dejaDev.add(currentnode);
 
-            for (Iterator<O> it = currentstate.applicableOperators(); it.hasNext(); ) {
+            for (Iterator<O> it = currentstate.applicableOperators(); it.hasNext();) {
                 O operator = it.next();
                 S successor = operator.successor(currentstate);
 
