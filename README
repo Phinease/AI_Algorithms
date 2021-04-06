@@ -1,0 +1,49 @@
+Readme:
+On a fini les algos suivants:
+
+AStarSearchStats
+BoundedDepthFirstSearchCycleDetectStats
+DepthFirstSearchCycleDetectStats
+DepthFirstSearchNaiveStats
+IterativeDeepeningSearchStats
+UniformCostSearchStats
+
+On a fini les modélisations suivants:
+
+taquin
+jugs
+
+Les tests d'algo sont principalement fait par GraphTestOtherAlgs
+
+REMARQUE:
+On a modifié la version de JDK à 14 pour utiliser des switchs plus pratiquement, merci de votre comprehension.
+
+
+Question 1:
+Formalisation
+- Espace d’états: E={(Villes restant à visiter, ville courante)}
+- Etat initial (Tous les villes  , ville de depart)
+- Etat final(aucune ville, ville de depart)
+- Opérateur : aller(Ville) condition : cette ville est l’un des villes restant à visiter et c’est possible de visiter
+- Coût d'opérateur: distance de ce route entre les deux ville / Temps de voyage entre les deux ville
+
+Question 2:
+
+H1 est minorante, si on a 4 villes restant,
+les meilleures cas est de faire 4 fois déplacement pour attendre l’état final,
+si on prendre le chemin plus court,
+et la nombre de ville fois la distance plus petit est forcement inférieur à chemin optimale pour visiter.
+
+H2 n’est pas minorante, on va donner une contre-exemple.
+Supposons la distance entre la ville courante est V1 est d,
+et les villes restant à visiter V1, V2, V0 sont très proches,
+les distances entre eux sont négligeables alors la longueur moyenne des routes quittant de V1 est d/2,
+pour V2 est d/3, pour v0 est d/2, la somme est (4d)/3, mais en fait le coût optimale vers v0 est d, 4d)/3>d,
+donc h2 n’est pas minorante
+
+H3 est minorante car pour chaque ville on va visiter qu’une fois,
+donc la somme de chemin le plus court est inférieur ou égale le coût optimiste.
+Et elle est dominante par rapport à h1 car h1 est le produit de chemin le plus court de carte,
+donc elle est inférieur ou égale à H3
+
+

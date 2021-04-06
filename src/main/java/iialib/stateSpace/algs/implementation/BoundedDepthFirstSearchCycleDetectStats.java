@@ -15,18 +15,19 @@ public class BoundedDepthFirstSearchCycleDetectStats<S extends IState<O>, O exte
 
     public static final String DESCRIPTION = "Bounded Depth-First Search (with cyle detection)";
     private final int maxDepth;
+    private final Stack<S> stack;
+    private final ArrayList<S> dejaVu;
     private int depth;
 
     public BoundedDepthFirstSearchCycleDetectStats(int maxDepth) {
+        stack = new Stack<>();
+        dejaVu = new ArrayList<>();
         this.maxDepth = maxDepth;
         depth = maxDepth;
     }
 
     @Override
     public Solution<S, O> solve(Problem<S> p) {
-        Stack<S> stack= new Stack<>();
-        ArrayList<S> dejaVu= new ArrayList<>();
-
         if (stack.empty()) stack.push(p.getInitialState());
 
         S currentState = stack.pop();
