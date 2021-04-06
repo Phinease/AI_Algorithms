@@ -24,12 +24,12 @@ public class AStarSearchStats<S extends IState<O>, O extends IOperatorWithCost<S
 	public Solution<S, O> solve(Problem<S> p, IHeuristic<S> h) {
 		System.out.println("-----------------------------------------------------");
 		System.out.println("Solving problem: " + p);
-		System.out.println("with algorithm: " + DESCRIPTION + " and heurisitic " + h);
+		System.out.println("with algorithm: " + DESCRIPTION + " and heuristic " + h);
 		System.out.println("-----------------------------------------------------");
+
 		resetStatistics();
 		ArrayList<SSNode<S, O>> dejaDev = new ArrayList<>();
 		ArrayList<SSNode<S, O>> frontiere = new ArrayList<>();
-
 		SortByF<S, O> comparator = new SortByF<>();
 
 		SSNode<S, O> init = new SSNode<>(p.getInitialState(), null, null);
@@ -37,11 +37,12 @@ public class AStarSearchStats<S extends IState<O>, O extends IOperatorWithCost<S
 		init.setF(h.apply(init.getState()));
 		frontiere.add(init);
 		increaseVisited();
-		SolutionWithCost<S, O> sol = null;
 
+		SolutionWithCost<S, O> sol = null;
 		while (!frontiere.isEmpty()) {
 			frontiere.sort(comparator);
 			SSNode<S, O> currentnode = frontiere.get(0);
+			S currentstate = currentnode.getState();
 			increaseDeveloped();
 
 			if(p.isTerminal(currentnode.getState())) {
@@ -52,10 +53,10 @@ public class AStarSearchStats<S extends IState<O>, O extends IOperatorWithCost<S
 			frontiere.remove(0);
 			dejaDev.add(currentnode);
 
-			S currentstate = currentnode.getState();
 			for (Iterator<O> it = currentstate.applicableOperators(); it.hasNext(); ) {
 				O operator = it.next();
 				S successor = operator.successor(currentstate);
+
 				SSNode<S, O> node = getNodeIfExist(frontiere, successor);
 				if (node == null) node = getNodeIfExist(dejaDev, successor);
 

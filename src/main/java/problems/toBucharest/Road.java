@@ -1,24 +1,23 @@
 package problems.toBucharest;
 
 public class Road {
-	 
+
 	// ------------ Attributes -------------------
-	 private City c1;
-	 private City c2;
-	 private String roadId;
-	 private float distance;
+	private final City c1;
+	private final City c2;
+	private final String roadId;
+	private final float distance;
 
-	 // ------------ Constructors -------------------
-		public Road(City c1, City c2, String roadId, int distance) {
-			super();
-			this.c1 = c1;
-			this.c2 = c2;
-			this.roadId = roadId;
-			this.distance = distance;
-		}
+	// ------------ Constructors -------------------
+	public Road(City c1, City c2, String roadId, int distance) {
+		super();
+		this.c1 = c1;
+		this.c2 = c2;
+		this.roadId = roadId;
+		this.distance = distance;
+	}
 
-
-	 // ------------ Getters/Setters -------------------
+	// ------------ Getters/Setters -------------------
 		
 		public City getC1() {
 			return c1;
@@ -48,7 +47,6 @@ public class Road {
 			result = prime * result + ((roadId == null) ? 0 : roadId.hashCode());
 			return result;
 		}
-
 
 		@Override
 		public boolean equals(Object obj) {

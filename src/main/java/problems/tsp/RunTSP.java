@@ -98,6 +98,5 @@ public class RunTSP {
         aStar.solve(p, minDist);
         aStar.solve(p, minConnectedDist);
         aStar.solve(p, avConnectedDist);
-
     }
 }

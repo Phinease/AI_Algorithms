@@ -2,6 +2,7 @@ package problems.toBucharest;
 
 import iialib.stateSpace.algs.IHeuristicSearchAlgorithm;
 import iialib.stateSpace.algs.Solution;
+import iialib.stateSpace.algs.SolutionWithCost;
 import iialib.stateSpace.algs.implementation.*;
 
 import iialib.stateSpace.model.Problem;
@@ -16,12 +17,16 @@ public class RunToBucharest{
 				
 
 		// -- Testing non informed search Algorithms --
-		IHeuristicSearchAlgorithm<City,OpRoad> aStar = new AStarSearchStats<>();
+//		IHeuristicSearchAlgorithm<City,OpRoad> aStar = new AStarSearchStats<>();
+//
+//		Solution<City,OpRoad> sol = aStar.solve(p,Heuristics.h);
+//		System.out.println(sol);
 
-		Solution<City,OpRoad> sol = aStar.solve(p,Heuristics.h);
-		System.out.println(sol);
-	   
-	/*	
+		BestFirstSearchStats<City,OpRoad> alg9 = new BestFirstSearchStats<>();
+		SolutionWithCost<City,OpRoad> bestSol3= (SolutionWithCost<City, OpRoad>) alg9.solve(p, Heuristics.h);
+		System.out.println(bestSol3);
+
+	/*
 		ASearchAlgorithmStats<City,OpRoad> alg2 = new BoundedDepthFirstSearchCycleDetectStats<>(12);
 
 		Solution<City,OpRoad> s2= alg2.solve(p);
@@ -60,9 +65,7 @@ public class RunToBucharest{
 		SolutionWithCost<City,OpRoad> bestSol2= (SolutionWithCost<City, OpRoad>) alg8.solve(p);
 		System.out.println();
 
-		BestFirstSearch<City,OpRoad> alg9 = new BestFirstSearch<>(Heuristics.h1);
-		SolutionWithCost<City,OpRoad> bestSol3= (SolutionWithCost<City, OpRoad>) alg9.solve(p);
-		System.out.println();
+
 */
 		
 	}

@@ -36,7 +36,7 @@ public enum City implements IState<OpRoad> {
 	/**
 	 * the node label
 	 */
-	private String name;
+	private final String name;
 
 	// ---------- Constructors ------------
 
@@ -48,7 +48,7 @@ public enum City implements IState<OpRoad> {
 
 	@Override
 	public Iterator<OpRoad> applicableOperators() {
-		return new ApplicableOpsIterator<City, OpRoad>(OpRoad.ALL_OPS, this);
+		return new ApplicableOpsIterator<>(OpRoad.ALL_OPS, this);
 	}
 
 	@Override
@@ -74,7 +74,7 @@ public enum City implements IState<OpRoad> {
 
 	// Constants ----------------------------------------------------------
 	/* A set of known roads of Romania */
-	public static Set<Road> romaniaRoads = new HashSet<Road>() {{
+	public static Set<Road> romaniaRoads = new HashSet<>() {{
 			// Reminder : Roads are non oriented
 			add(new Road(Arad, Brasov, "DN7", 130));
 			add(new Road(Arad, Sibiu, "DN79", 140));
@@ -117,7 +117,5 @@ public enum City implements IState<OpRoad> {
 		}
 		
 		private static final long serialVersionUID = 1L;
-
 	};
-
 }

@@ -1,13 +1,12 @@
 package problems.toBucharest;
 
+import iialib.stateSpace.model.IOperatorWithCost;
+
 import java.util.ArrayList;
 import java.util.List;
 
-import iialib.stateSpace.model.IOperatorWithCost;
-
 public class OpRoad implements IOperatorWithCost<City>{
 
-	
 	// ------------ List with all operators -------------------
 	public static final List<OpRoad> ALL_OPS = new ArrayList<>();
 	 
@@ -54,9 +53,4 @@ public class OpRoad implements IOperatorWithCost<City>{
 	public String toString() {
 		return this.getName()+"("+this.cost+")";
 	}
-	
-	
-	
-	
-
 }

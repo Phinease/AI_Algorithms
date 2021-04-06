@@ -28,10 +28,8 @@ public class Heuristics {
 			case Timisoara -> 329;
 			case Urziceni -> 80;
 			case Vaslui -> 199;
-			/* Zerind */
-			default -> 374;
+			case Zerind -> 374;
 		};
-						
 	}
 	
 	public static IHeuristic<City> h = new IHeuristic<>(){

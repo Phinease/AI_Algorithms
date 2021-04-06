@@ -13,7 +13,6 @@ public class TSPState implements IState<TSPOperator> {
     // Data from the map
     public static AMap MAP;
 
-
     // --- State Attributes -----
     /**
      * the last reached town
@@ -48,10 +47,7 @@ public class TSPState implements IState<TSPOperator> {
                 for (String t2 : towns)
                     if (MAP.areConnected(t1, t2))
                         TSPOperator.ALL_OPS.add(new TSPOperator(t1, t2, MAP.roadId(t1, t2), MAP.distance(t1, t2)));
-
-
         }
-
     }
 
     // --- Getters  -----
