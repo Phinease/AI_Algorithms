@@ -89,9 +89,10 @@ public class UniformCostSearchStats<S extends IState<O>, O extends IOperatorWith
 					node.setF(node.getF() + operator.getCost());
 					frontiere.add(node);
 					increaseVisited();
-				} else if (node.getG() > currentnode.getG() + operator.getCost()) {
+				} else if (node.getF() > currentnode.getF() + operator.getCost()) {
 					node.setAncestor(currentnode);
 					node.setF(node.getF() + operator.getCost());
+					if (removeNodeWithSameState(dejaDev, node.getState())) frontiere.add(node);
 				}
 			}
 		}
@@ -99,5 +100,9 @@ public class UniformCostSearchStats<S extends IState<O>, O extends IOperatorWith
 		System.out.println((sol != null) ? "Solution : " + sol + "\nCost : " + sol.cost() : "FAILURE !");
 		System.out.println("-----------------------------------------------------");
 		return sol;
+	}
+
+	private static <S extends IState<O>, O extends IOperatorWithCost<S>> boolean removeNodeWithSameState(Collection<SSNode<S, O>> collection, S state) {
+		return collection.removeIf(node -> node.getState().equals(state));
 	}
 }

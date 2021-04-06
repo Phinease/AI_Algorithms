@@ -47,11 +47,12 @@ public class IterativeDeepeningSearchStats<S extends IState<O>, O extends IOpera
         int count = 0;
 
         while (!stop && !success && count < maxIter) {
+            System.out.println(borne);
             newBorne = Double.MAX_VALUE;
             ArrayList<S> dejaVue = new ArrayList<>();
             sol = rProfHeuristiqueBornnee(node, dejaVue, p, h);
 
-            if (sol == null) {
+            if (sol != null) {
                 if (newBorne > borne) {
                     borne = newBorne;
                 } else {
@@ -81,13 +82,13 @@ public class IterativeDeepeningSearchStats<S extends IState<O>, O extends IOpera
         }
 
         if (dejaDev.contains(state)) return null;
+        dejaDev.add(state);
         Iterator<O> it = state.applicableOperators();
         while (it.hasNext()) {
             O operator = it.next();
             SSNode<S, O> successor = new SSNode<>(operator.successor(state), operator, node);
             successor.setG(node.getG() + operator.getCost());
             successor.setF(successor.getG() + h.apply(successor.getState()));
-            dejaDev.add(state);
             SolutionWithCost<S, O> rest = rProfHeuristiqueBornnee(successor, dejaDev, p, h);
 
             if (rest != null) {

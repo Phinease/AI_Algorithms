@@ -13,7 +13,9 @@ On a fini les modélisations suivants:
 taquin
 jugs
 
-Les tests d'algo sont principalement fait par GraphTestOtherAlgs
+Les tests d'algo sont principalement fait par GraphTestOtherAlgs,
+ces algos n'ont pas encore obtenu le resultat prospectif:
+IDA* (Pas encore addmisible en comparant A*), UniformCost (marche pas encore)
 
 REMARQUE:
 On a modifié la version de JDK à 14 pour utiliser des switchs plus pratiquement, merci de votre comprehension.

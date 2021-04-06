@@ -97,10 +97,11 @@ public class AStarSearchStats<S extends IState<O>, O extends IOperatorWithCost<S
                     frontiere.add(node);
                     increaseVisited();
                 } else if (node.getG() > currentnode.getG() + operator.getCost()) {
-                    node.setAncestor(currentnode);
                     node.setG(currentnode.getG() + operator.getCost());
                     node.setF(node.getG() + h.apply(successor));
-                    if (removeNodeWithSameState(dejaDev, successor)) frontiere.add(node);
+                    if (removeNodeWithSameState(dejaDev, successor)) {
+                        frontiere.add(node);
+                    }
                     increaseVisited();
                 }
             }
